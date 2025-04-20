@@ -4,51 +4,64 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 222 56% 9%;
+    --foreground: 195 11% 85%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 223 49% 10%;
+    --card-foreground: 195 11% 85%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 223 49% 10%;
+    --popover-foreground: 195 11% 85%;
 
-    --primary: 200 98% 39%;
-    --primary-foreground: 210 40% 98%;
+    /* Neon Cyan */
+    --primary: 184 100% 50%;
+    --primary-foreground: 223 49% 10%;
 
-    --secondary: 199 89% 48%;
-    --secondary-foreground: 210 40% 98%;
+    /* Deep Violet */
+    --secondary: 248 72% 63%;
+    --secondary-foreground: 223 49% 10%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Silver Mist & Deep Violet variants */
+    --muted: 196 15% 84%;
+    --muted-foreground: 196 15% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 248 72% 63%;
+    --accent-foreground: 223 49% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 223 49% 15%;
+    --input: 223 49% 15%;
+    --ring: 184 100% 50%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* MedBot Theme Colors */
+    --medbot-cyan: #00F0FF;
+    --medbot-black: #0A0F24;
+    --medbot-silver: #D8E3E7;
+    --medbot-violet: #6C5CE7;
+    --medbot-dark-violet: #5344cb;
+    --medbot-light-cyan: #8fffff;
+    --medbot-dark-cyan: #00c8d6;
+    --medbot-glow: 0 0 10px rgba(0, 240, 255, 0.5);
+    --medbot-violet-glow: 0 0 10px rgba(108, 92, 231, 0.5);
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Glassmorphism Variables */
+    --glass-background: rgba(10, 15, 36, 0.7);
+    --glass-border: rgba(216, 227, 231, 0.2);
+    --glass-shadow: 0 8px 32px rgba(0, 240, 255, 0.1);
+    --glass-blur: blur(12px);
+    
+    /* Custom Cursor Variables */
+    --cursor-size: 20px;
+    --cursor-color: rgba(0, 240, 255, 0.6);
+    --cursor-border: rgba(108, 92, 231, 0.8);
+    
+    /* Animated Text Variables */
+    --letter-wiggle-duration: 3s;
+    --letter-wiggle-amplitude: 2px;
   }
 
   .dark {
@@ -97,5 +110,796 @@
 
   body {
     @apply bg-background text-foreground;
+    background-color: var(--medbot-black);
+    color: var(--medbot-silver);
+    cursor: none; /* Hide the default cursor when custom cursor is active */
+  }
+
+  /* Heading and text styles */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--medbot-silver);
+  }
+  
+  /* Animated wiggle text for main headings */
+  h1.animate-text, h2.animate-text, .heading-animate {
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+  }
+  
+  /* Style for each individual letter */
+  .animate-text .letter, .heading-animate .letter {
+    display: inline-block;
+    position: relative;
+    animation: letterWiggle var(--letter-wiggle-duration) infinite ease-in-out;
+  }
+  
+  /* Apply different animation delays to each letter */
+  .animate-text .letter:nth-child(1n), .heading-animate .letter:nth-child(1n) {
+    animation-delay: -0.5s;
+  }
+  
+  .animate-text .letter:nth-child(2n), .heading-animate .letter:nth-child(2n) {
+    animation-delay: -1s;
+  }
+  
+  .animate-text .letter:nth-child(3n), .heading-animate .letter:nth-child(3n) {
+    animation-delay: -1.5s;
+  }
+  
+  .animate-text .letter:nth-child(4n), .heading-animate .letter:nth-child(4n) {
+    animation-delay: -2s;
+  }
+  
+  .animate-text .letter:nth-child(5n), .heading-animate .letter:nth-child(5n) {
+    animation-delay: -2.5s;
+  }
+  
+  /* Span with color that should also animate */
+  .animate-text span, .heading-animate span {
+    display: inline-block;
+  }
+  
+  .animate-text span .letter, .heading-animate span .letter {
+    color: inherit;
+  }
+  
+  a {
+    color: var(--medbot-cyan);
+    transition: all 0.3s ease;
+  }
+  
+  a:hover {
+    text-shadow: var(--medbot-glow);
+  }
+  
+  /* 1. Image Grayscale Effect - Add grayscale filter to all images by default */
+  img {
+    filter: grayscale(100%);
+    transition: filter 0.6s ease-in-out;
+  }
+  
+  /* Image turns colorful on hover */
+  img:hover {
+    filter: grayscale(0%);
+  }
+  
+  /* Custom cursor elements */
+  .cursor-dot {
+    width: var(--cursor-size);
+    height: var(--cursor-size);
+    background-color: var(--cursor-color);
+    border: 2px solid var(--cursor-border);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: width 0.2s, height 0.2s, opacity 0.2s;
+    backdrop-filter: blur(1px);
+  }
+  
+  .cursor-outline {
+    width: calc(var(--cursor-size) * 2);
+    height: calc(var(--cursor-size) * 2);
+    border: 1px solid var(--cursor-border);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9998;
+    transition: transform 0.2s ease-out, width 0.3s, height 0.3s;
+    mix-blend-mode: difference;
+  }
+  
+  /* Make cursor larger when hovering over links or buttons */
+  a:hover ~ .cursor-dot,
+  button:hover ~ .cursor-dot,
+  input:hover ~ .cursor-dot,
+  textarea:hover ~ .cursor-dot {
+    width: calc(var(--cursor-size) * 1.5);
+    height: calc(var(--cursor-size) * 1.5);
+    background-color: transparent;
+  }
+  
+  a:hover ~ .cursor-outline,
+  button:hover ~ .cursor-outline,
+  input:hover ~ .cursor-outline,
+  textarea:hover ~ .cursor-outline {
+    width: calc(var(--cursor-size) * 3);
+    height: calc(var(--cursor-size) * 3);
+    border-color: var(--medbot-cyan);
+  }
+}
+
+/* Glassmorphism components */
+@layer components {
+  .glass-card {
+    background: var(--glass-background);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+  }
+  
+  .glass-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 240, 255, 0.2);
+    transform: translateY(-5px);
+  }
+  
+  .neon-button {
+    background-color: transparent;
+    color: var(--medbot-cyan);
+    border: 1px solid var(--medbot-cyan);
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .neon-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.2), transparent);
+    transition: all 0.6s ease;
+    z-index: -1;
+  }
+  
+  .neon-button:hover {
+    color: var(--medbot-black);
+    background-color: var(--medbot-cyan);
+    box-shadow: var(--medbot-glow);
+  }
+  
+  .neon-button:hover::before {
+    left: 100%;
+  }
+  
+  .violet-button {
+    background-color: var(--medbot-violet);
+    color: white;
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+  }
+  
+  .violet-button:hover {
+    background-color: var(--medbot-dark-violet);
+    box-shadow: var(--medbot-violet-glow);
+    transform: translateY(-2px);
+  }
+  
+  .feature-card {
+    background-color: rgba(10, 15, 36, 0.7);
+    border: 1px solid rgba(108, 92, 231, 0.3);
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .feature-card:hover {
+    border-color: var(--medbot-cyan);
+    box-shadow: var(--medbot-glow);
+    transform: translateY(-5px);
+  }
+  
+  .feature-icon {
+    background: linear-gradient(135deg, var(--medbot-violet), var(--medbot-dark-violet));
+    color: white;
+    border-radius: 50%;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+  }
+  
+  .feature-card:hover .feature-icon {
+    background: linear-gradient(135deg, var(--medbot-cyan), var(--medbot-dark-cyan));
+    transform: scale(1.1);
+  }
+  
+  /* 2. Navigation Animation - Bouncy navigation links */
+  .nav-link {
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy effect with cubic-bezier */
+  }
+  
+  .nav-link:hover {
+    transform: scale(1.1);
+  }
+  
+  .nav-link:active {
+    transform: scale(0.95);
+  }
+  
+  /* Underline effect for nav links */
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--medbot-cyan);
+    transition: width 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+    box-shadow: 0 0 8px var(--medbot-cyan);
+  }
+}
+
+/* Animation utilities */
+@layer utilities {
+  /* Fade-in animation */
+  .animate-fade-in {
+    animation: fade-in 1s ease-out;
+  }
+  
+  /* Slide-up animation */
+  .animate-slide-up {
+    animation: slide-up 0.8s ease-out;
+  }
+  
+  /* Slide-in-right animation */
+  .animate-slide-in-right {
+    animation: slide-in-right 0.8s ease-out;
+  }
+  
+  /* Slide-in-left animation */
+  .animate-slide-in-left {
+    animation: slide-in-left 0.8s ease-out;
+  }
+  
+  /* Scale animation */
+  .animate-scale {
+    animation: scale 0.6s ease-out;
+  }
+  
+  /* Pulse animation */
+  .animate-pulse-subtle {
+    animation: pulse-subtle 2s infinite;
+  }
+  
+  /* Float animation for glassmorphism cards */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Typing effect animation */
+  .animate-typing {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--medbot-cyan);
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+  
+  /* Glow effect on hover */
+  .hover-glow:hover {
+    box-shadow: var(--medbot-glow);
+  }
+  
+  .hover-glow-violet:hover {
+    box-shadow: var(--medbot-violet-glow);
+  }
+
+  /* Scroll animation classes */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+  }
+  
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .reveal-delay-1 {
+    transition-delay: 0.1s;
+  }
+  
+  .reveal-delay-2 {
+    transition-delay: 0.2s;
+  }
+  
+  .reveal-delay-3 {
+    transition-delay: 0.3s;
+  }
+  
+  .reveal-delay-4 {
+    transition-delay: 0.4s;
+  }
+  
+  /* Bouncy animation for nav elements */
+  .bounce-hover {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .bounce-hover:hover {
+    transform: scale(1.1);
+  }
+  
+  .bounce-hover:active {
+    transform: scale(0.95);
+  }
+
+  /* NEW MedBot Tech Animations */
+  
+  /* Glitch effect for text */
+  .glitch-text {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .glitch-text::before, .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip: rect(0, 0, 0, 0);
+  }
+  
+  .glitch-text::before {
+    left: 2px;
+    text-shadow: -1px 0 var(--medbot-cyan);
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+  }
+  
+  .glitch-text::after {
+    left: -2px;
+    text-shadow: 1px 0 var(--medbot-violet);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+  }
+  
+  /* Scanning line effect */
+  .scanning-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .scanning-effect::after {
+    content: '';
+    position: absolute;
+    top: -150%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 240, 255, 0) 0%,
+      rgba(0, 240, 255, 0.2) 50%,
+      rgba(0, 240, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    animation: scanning 3s infinite;
+  }
+  
+  /* Cyber-pulse border */
+  .cyber-border {
+    position: relative;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+  }
+  
+  .cyber-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    margin: -1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      90deg,
+      var(--medbot-cyan),
+      var(--medbot-violet),
+      var(--medbot-cyan)
+    );
+    animation: cyber-border-pulse 3s infinite linear;
+  }
+  
+  /* Hologram flicker */
+  .hologram-flicker {
+    animation: hologram-flicker 6s infinite;
+  }
+  
+  /* Radial expand on hover */
+  .radial-expand {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .radial-expand::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(
+      circle,
+      rgba(0, 240, 255, 0.4) 0%,
+      rgba(0, 240, 255, 0) 70%
+    );
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+    z-index: -1;
+    border-radius: 50%;
+  }
+  
+  .radial-expand:hover::after {
+    width: 200%;
+    height: 200%;
+  }
+  
+  /* Neon text pulse */
+  .neon-text-pulse {
+    color: var(--medbot-cyan);
+    text-shadow: 0 0 5px var(--medbot-cyan);
+    animation: neon-text-pulse 2s infinite;
+  }
+  
+  /* Data flow background */
+  .data-flow-bg {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .data-flow-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(0, 240, 255, 0),
+      rgba(0, 240, 255, 0) 20px,
+      rgba(0, 240, 255, 0.1) 20px,
+      rgba(0, 240, 255, 0.1) 40px
+    );
+    animation: data-flow 8s linear infinite;
+    z-index: -1;
+  }
+  
+  /* Shimmer effect */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    animation: shimmer 3s infinite;
+  }
+  
+  /* 3D rotate hover effect */
+  .rotate-3d {
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  .rotate-3d:hover {
+    transform: rotateY(15deg) rotateX(5deg);
+  }
+}
+
+/* Animations keyframes */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-subtle {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--medbot-cyan) }
+}
+
+/* Glowing animations */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 240, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(0, 240, 255, 0.5);
+  }
+}
+
+/* Bounce animation for navigation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Letter wiggle animation */
+@keyframes letterWiggle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(calc(var(--letter-wiggle-amplitude) * -1));
+  }
+  75% {
+    transform: translateY(var(--letter-wiggle-amplitude));
+  }
+}
+
+/* NEW Animation Keyframes */
+
+@keyframes glitch-anim-1 {
+  0% {
+    clip: rect(2px, 9999px, 15px, 0);
+  }
+  10% {
+    clip: rect(28px, 9999px, 73px, 0);
+  }
+  20% {
+    clip: rect(46px, 9999px, 78px, 0);
+  }
+  30% {
+    clip: rect(8px, 9999px, 13px, 0);
+  }
+  40% {
+    clip: rect(63px, 9999px, 92px, 0);
+  }
+  50% {
+    clip: rect(30px, 9999px, 57px, 0);
+  }
+  60% {
+    clip: rect(16px, 9999px, 59px, 0);
+  }
+  70% {
+    clip: rect(23px, 9999px, 38px, 0);
+  }
+  80% {
+    clip: rect(1px, 9999px, 4px, 0);
+  }
+  90% {
+    clip: rect(18px, 9999px, 53px, 0);
+  }
+  100% {
+    clip: rect(31px, 9999px, 76px, 0);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0% {
+    clip: rect(62px, 9999px, 89px, 0);
+  }
+  10% {
+    clip: rect(31px, 9999px, 36px, 0);
+  }
+  20% {
+    clip: rect(5px, 9999px, 36px, 0);
+  }
+  30% {
+    clip: rect(56px, 9999px, 59px, 0);
+  }
+  40% {
+    clip: rect(12px, 9999px, 23px, 0);
+  }
+  50% {
+    clip: rect(45px, 9999px, 56px, 0);
+  }
+  60% {
+    clip: rect(67px, 9999px, 98px, 0);
+  }
+  70% {
+    clip: rect(32px, 9999px, 64px, 0);
+  }
+  80% {
+    clip: rect(15px, 9999px, 29px, 0);
+  }
+  90% {
+    clip: rect(60px, 9999px, 74px, 0);
+  }
+  100% {
+    clip: rect(20px, 9999px, 66px, 0);
+  }
+}
+
+@keyframes scanning {
+  0% {
+    top: -150%;
+  }
+  100% {
+    top: 150%;
+  }
+}
+
+@keyframes cyber-border-pulse {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes hologram-flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  5% {
+    opacity: 0.8;
+  }
+  10% {
+    opacity: 1;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  20% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.7;
+  }
+  65% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.9;
+  }
+  75%, 95% {
+    opacity: 1;
+  }
+}
+
+@keyframes neon-text-pulse {
+  0%, 100% {
+    text-shadow: 0 0 5px var(--medbot-cyan), 0 0 10px var(--medbot-cyan);
+  }
+  50% {
+    text-shadow: 0 0 15px var(--medbot-cyan), 0 0 30px var(--medbot-cyan), 0 0 40px var(--medbot-cyan);
+  }
+}
+
+@keyframes data-flow {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: rotate(30deg) translateX(-100%);
+  }
+  100% {
+    transform: rotate(30deg) translateX(100%);
   }
 }

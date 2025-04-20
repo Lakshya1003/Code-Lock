@@ -1,0 +1,12 @@
+symptom,disease,risk_level,recommendations
+fever,cold,low,"Rest, stay hydrated, take over-the-counter medication"
+fever,flu,medium,"Rest, stay hydrated, consult doctor if symptoms worsen"
+fever,covid-19,high,"Isolate, get tested, consult healthcare provider"
+headache,stress,low,"Practice relaxation techniques, get adequate sleep"
+headache,migraine,medium,"Rest in dark room, take prescribed medication"
+chest_pain,anxiety,medium,"Practice deep breathing, consult mental health professional"
+chest_pain,heart_condition,high,"Seek immediate medical attention"
+fatigue,anemia,medium,"Increase iron-rich foods, consult doctor for supplements"
+fatigue,depression,medium,"Seek mental health support, maintain regular sleep schedule"
+shortness_of_breath,asthma,medium,"Use inhaler, avoid triggers, consult doctor"
+shortness_of_breath,pneumonia,high,"Seek immediate medical attention" 

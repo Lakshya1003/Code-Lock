@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Risk Analyzer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Health Risk Analyzer</h1>
+            <p class="subtitle">AI-Powered Health Assessment System</p>
+        </header>
+
+        <main>
+            <!-- Initial Symptoms Input -->
+            <section id="initial-input" class="card">
+                <h2>Enter Your Symptoms</h2>
+                <div class="input-group">
+                    <input type="text" id="symptoms-input" placeholder="e.g., headache, cough, dizziness">
+                    <button id="analyze-btn" class="glow-button">Analyze</button>
+                </div>
+            </section>
+
+            <!-- Initial Analysis Results -->
+            <section id="initial-results" class="card hidden">
+                <h2>Initial Analysis</h2>
+                <div class="results-container">
+                    <div class="symptoms-detected">
+                        <h3>Detected Symptoms</h3>
+                        <div id="detected-symptoms" class="symptoms-list"></div>
+                    </div>
+                    
+                    <div class="conditions">
+                        <h3>Potential Conditions</h3>
+                        <div id="potential-conditions" class="conditions-list"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Follow-up Questions -->
+            <section id="follow-up" class="card hidden">
+                <h2>Follow-up Questions</h2>
+                <p>Please select any additional symptoms you're experiencing:</p>
+                <div id="follow-up-questions" class="questions-list"></div>
+                <button id="final-analysis-btn" class="glow-button">Get Final Analysis</button>
+            </section>
+
+            <!-- Final Analysis Results -->
+            <section id="final-results" class="card hidden">
+                <h2>Final Analysis</h2>
+                <div class="results-container">
+                    <div class="all-symptoms">
+                        <h3>All Symptoms</h3>
+                        <div id="all-symptoms" class="symptoms-list"></div>
+                    </div>
+                    
+                    <div class="final-conditions">
+                        <h3>Detailed Risk Assessment</h3>
+                        <div id="final-conditions" class="conditions-details"></div>
+                    </div>
+                </div>
+                <button id="new-analysis-btn" class="glow-button">Start New Analysis</button>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2024 Health Risk Analyzer | AI-Powered Health Assessment</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 

@@ -1,5 +1,7 @@
 # Welcome to your Lovable project
 
+
+
 ## Project info
 
 **URL**: https://lovable.dev/projects/095d8003-96e7-45a1-af0a-c0554220ae11
@@ -38,9 +40,6 @@ The only requirement is having Node.js & npm installed - [install with nvm](http
 
 Simply open [Lovable](https://lovable.dev/projects/095d8003-96e7-45a1-af0a-c0554220ae11) and click on Share -> Publish.
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
 
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 

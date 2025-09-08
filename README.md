@@ -34,16 +34,6 @@ The only requirement is having Node.js & npm installed - [install with nvm](http
 - Click on "New codespace" to launch a new Codespace environment.
 - Edit files directly within the Codespace and commit and push your changes once you're done.
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/095d8003-96e7-45a1-af0a-c0554220ae11) and click on Share -> Publish.
